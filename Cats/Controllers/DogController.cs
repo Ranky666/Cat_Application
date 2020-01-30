@@ -1,18 +1,17 @@
-﻿using System.Linq;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Cats.Models;
-using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 
-
-
-
-namespace Cats.Controllers
+namespace Dogs.Controllers
 {
-    public class HomeController : Controller
+    public class DogController : Controller
     {
-        CatContext db;
-        public HomeController(CatContext context)
+       CatContext db;
+        public DogController(CatContext context)
         {
             db = context;
         }
@@ -20,17 +19,17 @@ namespace Cats.Controllers
 
         public async Task<IActionResult> Index()
         {
-            return View(await db.Cats.ToListAsync());
+            return View(await db.Dogs.ToListAsync());
         }
         public IActionResult Create()
         {
             return View();
         }
         [HttpPost]
-        public async Task<IActionResult> Create(Cat cat)
+        public async Task<IActionResult> Create(Dog dog)
         {
-          
-            db.Cats.Add(cat);
+
+            db.Dogs.Add(dog);
             await db.SaveChangesAsync();
             return RedirectToAction("Index");
         }
@@ -39,16 +38,16 @@ namespace Cats.Controllers
         {
             if (id != null)
             {
-                Cat cat = await db.Cats.FirstOrDefaultAsync(p => p.Id == id);
-                if (cat != null)
-                    return View(cat);
+                Dog dog = await db.Dogs.FirstOrDefaultAsync(p => p.Id == id);
+                if (dog != null)
+                    return View(dog);
             }
             return NotFound();
         }
         [HttpPost]
-        public async Task<IActionResult> Edit(Cat cat)
+        public async Task<IActionResult> Edit(Dog dog)
         {
-            db.Cats.Update(cat);
+            db.Dogs.Update(dog);
             await db.SaveChangesAsync();
             return RedirectToAction("Index");
         }
@@ -59,25 +58,25 @@ namespace Cats.Controllers
         {
             if (id != null)
             {
-                Cat cat = await db.Cats.FirstOrDefaultAsync(p => p.Id == id);
-                if (cat != null)
-                    db.Cats.Remove(cat);
-                    await db.SaveChangesAsync();
-                    return RedirectToAction("Index");
-                   
+                Dog dog = await db.Dogs.FirstOrDefaultAsync(p => p.Id == id);
+                if (dog != null)
+                    db.Dogs.Remove(dog);
+                await db.SaveChangesAsync();
+                return RedirectToAction("Index");
+
             }
             return NotFound();
         }
 
-        
+
 
         public async Task<IActionResult> Details(int? id)
         {
             if (id != null)
             {
-                Cat cat = await db.Cats.FirstOrDefaultAsync(p => p.Id == id);
-                if (cat != null)
-                    return View(cat);
+                Dog dog = await db.Dogs.FirstOrDefaultAsync(p => p.Id == id);
+                if (dog != null)
+                    return View(dog);
             }
             return NotFound();
         }

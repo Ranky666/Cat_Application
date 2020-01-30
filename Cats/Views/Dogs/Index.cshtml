@@ -1,0 +1,52 @@
+﻿@model IEnumerable<Dog>
+@{
+
+    ViewData["Title"] = "Каталог котиков";
+}
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>Меню собакенов</title>
+
+</head>
+<body>
+    <h3> Выбор собакена</h3>
+    <table class="table-condensed">
+        <tr>
+            <td>Кличка</td>
+            <td>Порода</td>
+            <td>Цена</td>
+            <td></td>
+        </tr>
+
+        @foreach (var dog in Model)
+        {
+            <tr>
+                <td>@dog.Name</td>
+                <td>@dog.Breed</td>
+                <td>@dog.Price</td>
+
+                <td><a asp-action="Edit" asp-controller="Dog" asp-route-id="@dog.Id">Редактировать</a></td>
+
+                <td><a asp-action="Delete" asp-controller="Dog" asp-route-id="@dog.Id">Удалить</a></td>
+
+                <td><a asp-action="Details" asp-controller="Dog" asp-route-id="@dog.Id">Информация</a></td>
+
+            </tr>
+        }
+
+    </table>
+    <style>
+        p {
+            margin-top: 10px;
+        }
+    </style>
+    <p><hr /></p>
+    <a href="~/Dog/Dogs/Create" class="Create">Добавить собакена</a>
+
+
+
+
+</body>
+</html>

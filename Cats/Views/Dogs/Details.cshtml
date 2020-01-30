@@ -1,0 +1,30 @@
+﻿@model Cats.Models.Dog
+@{
+    ViewBag.Title = "Информация о собакене";
+}
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>Меню собакене</title>
+</head>
+<body>
+
+    <h2>Котик @Model.Name</h2>
+    <div>
+        <dl class="dl-horizontal">
+            <dt>Идентификатор</dt>
+            <dd>@Model.Id</dd>
+
+            <dt>Порода</dt>
+            <dd>@Model.Breed</dd>
+
+            <dt>Кличка</dt>
+            <dd>@Model.Name</dd>
+
+            <dt>Цена</dt>
+            <dd>@Model.Price</dd>
+        </dl>
+    </div>
+</body>
+</html>

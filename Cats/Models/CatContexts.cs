@@ -12,6 +12,7 @@ namespace Cats.Models
         
         public DbSet<Cat> Cats { get; set; }
 
+        public DbSet<Dog> Dogs { get; set; }
         public CatContext(DbContextOptions<CatContext> options)
         : base(options)
         {

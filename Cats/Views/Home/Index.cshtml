@@ -22,16 +22,18 @@
 
         @foreach (var cat in Model)
         {
-            <tr>
-                <td>@cat.Name</td>
-                <td>@cat.Breed</td>
-                <td>@cat.Price</td>
+    <tr>
+        <td>@cat.Name</td>
+        <td>@cat.Breed</td>
+        <td>@cat.Price</td>
 
-                <td><a asp-action="Edit" asp-controller="Home" asp-route-id="@cat.Id">Редактировать</a></td>
-                <td><a asp-action="Delete" asp-controller="Home" asp-route-id="@cat.Id">Удалить</a></td>
-                <td><a asp-action="Details" asp-controller="Home" asp-route-id="@cat.Id">Информация</a></td>
+        <td><a asp-action="Edit" asp-controller="Home" asp-route-id="@cat.Id">Редактировать</a></td>
 
-            </tr>
+        <td><a asp-action="Delete" asp-controller="Home" asp-route-id="@cat.Id" >Удалить</a></td>
+        
+        <td><a asp-action="Details" asp-controller="Home" asp-route-id="@cat.Id">Информация</a></td>
+
+    </tr>
         }
 
     </table>
